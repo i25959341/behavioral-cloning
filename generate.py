@@ -5,7 +5,7 @@ import random
 from PIL import Image
 from itertools import islice
 
-OFFSET=0.1
+OFFSET = 0.08
 TOTALDATA=24107
 
 def shuffle(data, steering):
@@ -93,7 +93,7 @@ def generate(filepath, pct, batchSize=32,flip=False):
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
     if flip==True:
-        train, yTrain = addFlipData(train, yTrain,0.1)
+        train, yTrain = addFlipData(train, yTrain,0.5)
     train, yTrain = shuffle(train, yTrain)
     print (len(data))
     print (len(train))
