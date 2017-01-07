@@ -12,6 +12,29 @@ from keras.utils import np_utils
 from keras import backend as K
 from keras.layers.normalization import BatchNormalization
 
+def navidia():
+    nb_filters1 = 6
+    nb_filters2 = 9
+    nb_filters3 = 18
+    nb_filters4 = 36
+    nb_filters5 = 36
+
+    pool_size = (2, 2)
+
+    stride1 = [1,1]
+    stride2= [2,2]
+
+    kernel_size = (3, 3)
+    kernel_size1 = (3, 3)
+
+
+    model = Sequential()
+
+
+
+    return model
+
+
 def modelSetting():
     model = Sequential()
 

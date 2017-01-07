@@ -11,7 +11,7 @@ checkpoint = ModelCheckpoint(filepath = 'model.h5', verbose = 1, save_best_only=
 # Discontinue training when validation loss fails to decrease
 callback = EarlyStopping(monitor='val_loss', patience=2, verbose=1)
 
-nb_epochs=20
+nb_epochs=10
 batchSize=128
 total_examples = 24107
 
