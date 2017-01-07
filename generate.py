@@ -25,7 +25,7 @@ def prepareImage(image):
 def prepare_label(steering):
     return np.array([float(steering)])
 
-def read(filepath, flip=False):
+def read(filepath):
     with open(filepath) as csv_file:
         csvreader = csv.reader(csv_file, skipinitialspace=True)
         next(csvreader) # skip header row
@@ -45,17 +45,26 @@ def read(filepath, flip=False):
             steerings.append(centre[1])
             steerings.append(left[1])
             steerings.append(right[1])
-            # check for bug, check if the generator really flipped it
-            if flip==True:
-                data.append((centre[0],True))
-                data.append((left[0],True))
-                data.append((right[0],True))
-
-                steerings.append(-centre[1])
-                steerings.append(-left[1])
-                steerings.append(-right[1])
 
         return data, steerings
+
+def addFlipData(train, yTrain,pct):
+    newTrain=[]
+    newyTrain=[]
+    for i in range(len(train)):
+        newTrain.append(train[i])
+        newyTrain.append(yTrain[i])
+
+    num= int(pct*len(train))
+
+    for i in range(num):
+        steering = yTrain[i])
+        nameBool = train[i][0]
+
+        newTrain.append((nameBool,True))
+        newyTrain.append(-steering)
+
+    return train, yTrain
 
 def generateBatch(names, y_data, batch_size = 32):
     total = len(names)
@@ -67,7 +76,7 @@ def generateBatch(names, y_data, batch_size = 32):
             imageName=names[current][0]
             img = prepareImage(imageName)
 
-            if names[current][0]==True:
+            if names[current][1]==True:
                 img=np.fliplr(img)
             imageData[j]= img
 
@@ -81,9 +90,11 @@ def splitData(data, steerings,pct):
     return data[:line], steerings[:line], data[line:],steerings[line:]
 
 def generate(filepath, pct, batchSize=32,flip=False):
-    data, steerings = read(filepath, flip)
+    data, steerings = read(filepath)
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
+    if flip==True:
+        train, yTrain = addFlipData(train, yTrain,0.0)
     print (len(data))
     print (len(train))
     print (len(valid))
