@@ -58,13 +58,12 @@ def addFlipData(train, yTrain,pct):
     num= int(pct*len(train))
 
     for i in range(num):
-        steering = yTrain[i])
+        steering = yTrain[i]
         nameBool = train[i][0]
-
         newTrain.append((nameBool,True))
         newyTrain.append(-steering)
 
-    return train, yTrain
+    return newTrain, newyTrain
 
 def generateBatch(names, y_data, batch_size = 32):
     total = len(names)
@@ -94,7 +93,8 @@ def generate(filepath, pct, batchSize=32,flip=False):
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
     if flip==True:
-        train, yTrain = addFlipData(train, yTrain,0.0)
+        train, yTrain = addFlipData(train, yTrain,0.1)
+    train, yTrain = shuffle(train, yTrain)
     print (len(data))
     print (len(train))
     print (len(valid))
