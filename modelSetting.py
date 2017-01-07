@@ -33,15 +33,15 @@ def navidia():
 
     model.add(Convolution2D(nb_filters1, 3, 3, subsample=(1, 1), border_mode="same"))
     model.add(Activation('relu'))
-    model.add(Dropout(0.5))
+    # model.add(Dropout(0.5))
 
     model.add(Convolution2D(nb_filters2, 3, 3, subsample=(2, 2), border_mode="same"))
     model.add(Activation('relu'))
-    model.add(Dropout(0.5))
+    # model.add(Dropout(0.5))
 
     model.add(Convolution2D(nb_filters3, 3, 3, subsample=(2, 2), border_mode="same"))
     model.add(Activation('relu'))
-    model.add(Dropout(0.5))
+    # model.add(Dropout(0.5))
 
     model.add(Convolution2D(nb_filters4, 3, 3, subsample=(2, 2), border_mode="same"))
     model.add(Activation('relu'))
@@ -52,13 +52,13 @@ def navidia():
 
     model.add(Dense(500))
     model.add(Activation('relu'))
+    model.add(Dropout(0.5))
 
     model.add(Dense(100))
     model.add(Activation('relu'))
 
     model.add(Dense(50))
     model.add(Activation('relu'))
-
     model.add(Dropout(0.5))
 
     model.add(Dense(1))
