@@ -1,6 +1,6 @@
 from generate import generate
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from modelSetting import modelSetting
+from modelSetting import modelSetting, navidia
 import numpy as np
 import json
 import math
@@ -11,7 +11,7 @@ checkpoint = ModelCheckpoint(filepath = 'model.h5', verbose = 1, save_best_only=
 # Discontinue training when validation loss fails to decrease
 callback = EarlyStopping(monitor='val_loss', patience=2, verbose=1)
 
-nb_epochs=15
+nb_epochs=20
 batchSize=128
 total_examples = 24107
 
@@ -22,7 +22,7 @@ nb_valid = total_examples-nb_train
 
 train, valid = generate("data/driving_log.csv", 0.9, batchSize)
 
-model = modelSetting()
+model = navidia()
 
 model.compile(loss='mse', optimizer=Adam(lr=0.0001))
 
