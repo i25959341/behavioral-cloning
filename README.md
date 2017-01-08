@@ -1,6 +1,5 @@
 # behavioral-cloning
 
-
 ## Overview
 
 There are 3 python files for this project
@@ -11,7 +10,6 @@ There are 3 python files for this project
 3. The generations performs normalisation and cropp and resize the images
 4. During the process, it also perform reflections on the images to get extra set of image with opposite steeering angles for data augmentation
 5. This also perform data shuffling and train/valid data split. No test set is used, as it is not very useful. The best test is to drive!
-
 
 ## modelSetting.py
 1. This file gives the archietature of the model that I am using for learning
@@ -26,7 +24,21 @@ There are 3 python files for this project
 4. When the training is done, the model and weights are saved as model.json and model.h5.
 
 ## drive.py
+1. This is the python script that receives the data from the Udacity program, predicts the steering angle using the deep learning model, and send the throttle and the predicted angles back to the program.
+2. Since the images were reshaped and normalized during training, the image from the program is reshaped and normalized just as in generate.py and model.py
 
-This is the python script that receives the data from the Udacity program, predicts the steering angle using the deep learning model, and send the throttle and the predicted angles back to the program.
 
-Since the images were reshaped and normalized during training, the image from the program is reshaped and normalized just as in generate.py and model.py
+## Challenges
+
+## Input Data gathering
+
+## Track
+
+## Model network architecture
+
+
+
+## Data preparation
+
+
+## Conclusion
