@@ -90,6 +90,9 @@ def splitData(data, steerings,pct):
 
 def generate(filepath, pct, batchSize=32,flip=False):
     data, steerings = read(filepath)
+    data1, steerings1 = read("rightTurn/driving_log.csv")
+    data+= data1
+    steerings+=steerings1
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
     if flip==True:
