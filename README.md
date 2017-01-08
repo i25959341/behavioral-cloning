@@ -1,7 +1,6 @@
 # behavioral-cloning
 
 ## Overview
-
 There are 3 python files for this project
 
 ## generate.py
@@ -32,7 +31,7 @@ There are 3 python files for this project
 
 ## Input Data gathering
 
-## Track
+## Track - The Bridge, The 1st Corner after the bridge, the 2nd Coarn after the bridge turning right
 
 ## Model network architecture
 
