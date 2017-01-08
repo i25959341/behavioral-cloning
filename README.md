@@ -31,7 +31,7 @@ There are 3 python files for this project
 
 ## Input Data gathering
 
-## Track - The Bridge, The 1st Corner after the bridge, the 2nd Coarn after the bridge turning right
+## Track - The Bridge, The 1st Corner after the bridge with dirt, the 2nd Coarn after the bridge turning right
 
 ## Model network architecture
 
