@@ -17,7 +17,6 @@ def navidia():
     nb_filters2 = 18
     nb_filters3 = 24
     nb_filters4 = 36
-    nb_filters5 = 36
 
     pool_size = (2, 2)
 
