@@ -15,7 +15,7 @@ def shuffle(data, steering):
     return data, steering
 
 def prepareImage(image):
-    path = "data/"+image
+    path = image
     img = imread(path)
     img = np.array(img).astype(np.float32)
     img=img[60:134:2, 0:320:2,:]
@@ -25,18 +25,17 @@ def prepareImage(image):
 def prepare_label(steering):
     return np.array([float(steering)])
 
-def read(filepath):
+def read(filepath, folderName="data/"):
     with open(filepath) as csv_file:
         csvreader = csv.reader(csv_file, skipinitialspace=True)
         next(csvreader) # skip header row
-        # data= [(row[0], row[1], row[2], row[3]) for row in csvreader]
         data =[]
         steerings=[]
         for row in csvreader:
             steering=prepare_label(float(row[3]))
-            centre=(row[0], steering)
-            left=(row[1], steering+OFFSET)
-            right=(row[2], steering-OFFSET)
+            centre=(folderName+row[0], steering)
+            left=(folderName+row[1], steering+OFFSET)
+            right=(folderName+row[2], steering-OFFSET)
 
             data.append((centre[0],False))
             data.append((left[0],False))
@@ -62,7 +61,6 @@ def addFlipData(train, yTrain,pct):
         nameBool = train[i][0]
         newTrain.append((nameBool,True))
         newyTrain.append(-steering)
-
     return newTrain, newyTrain
 
 def generateBatch(names, y_data, batch_size = 32):
@@ -89,18 +87,18 @@ def splitData(data, steerings,pct):
     return data[:line], steerings[:line], data[line:],steerings[line:]
 
 def generate(filepath, pct, batchSize=32,flip=False):
-    data, steerings = read(filepath)
-    data1, steerings1 = read("rightTurn/driving_log.csv")
-    data+= data1
-    steerings+=steerings1
+    data, steerings = read(filepath, folderName="data/")
+    # data1, steerings1 = read("rightTurn/driving_log.csv", folderName="rightTurn/")
+    # data+= data1
+    # steerings+=steerings1
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
     if flip==True:
-        train, yTrain = addFlipData(train, yTrain,0.5)
+        train, yTrain = addFlipData(train, yTrain, 0.5)
     train, yTrain = shuffle(train, yTrain)
-    print (len(data))
-    print (len(train))
-    print (len(valid))
+    # print (len(data))
+    # print (len(train))
+    # print (len(valid))
     return (generateBatch(train, yTrain),
             generateBatch(valid, yValid))
 
