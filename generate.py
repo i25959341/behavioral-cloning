@@ -15,8 +15,7 @@ def shuffle(data, steering):
     return data, steering
 
 def prepareImage(image):
-    path = image
-    img = imread(path)
+    img = imread(image)
     img = np.array(img).astype(np.float32)
     img=img[60:134:2, 0:320:2,:]
     img = img/255 -0.5
@@ -88,9 +87,9 @@ def splitData(data, steerings,pct):
 
 def generate(filepath, pct, batchSize=32,flip=False):
     data, steerings = read(filepath, folderName="data/")
-    # data1, steerings1 = read("rightTurn/driving_log.csv", folderName="rightTurn/")
-    # data+= data1
-    # steerings+=steerings1
+    data1, steerings1 = read("rightTurn/driving_log.csv", folderName="rightTurn/")
+    data+= data1
+    steerings+=steerings1
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
     if flip==True:
