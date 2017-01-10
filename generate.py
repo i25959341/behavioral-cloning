@@ -93,6 +93,9 @@ def generate(filepath, pct, batchSize=32,flip=False):
     data2, steerings2 = read("dirtTurn/driving_log.csv", folderName="dirtTurn/")
     data+= data2
     steerings+=steerings2
+    data3, steerings3 = read("dirtRoad/driving_log.csv", folderName="dirtRoad/")
+    data+= data3
+    steerings+=steerings3
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
     if flip==True:
