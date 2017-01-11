@@ -99,4 +99,8 @@ All these difficulties were fixed by adding additional data to these specific co
 The most important thing is Data!
 
 
+Video link to the recording
+https://www.youtube.com/watch?v=_a7s1PPxcJc
+
+
 
