@@ -79,10 +79,7 @@ ________________________________________________________________________________
 dropout_3 (Dropout)              (None, 50)            0           activation_7[0][0]               
 ____________________________________________________________________________________________________
 dense_4 (Dense)                  (None, 1)             51          dropout_3[0][0]                  
-====================================================================================================
-Total params: 1,869,735
-Trainable params: 1,869,729
-Non-trainable params: 6
+____________________________________________________________________________________________________
 
 ## Track - The Bridge, The 1st Corner after the bridge with dirt, the 2nd Coarn after the bridge turning right
 After testing on autonomous mode, it became obvious that the car was struggling with several part of the track significant and there were the bridge, the 1st corner after the bridge and the 2nd right corner after the bridge.
