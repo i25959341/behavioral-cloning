@@ -93,9 +93,9 @@ def generate(filepath, pct, batchSize=32,flip=False):
     data2, steerings2 = read("dirtLeft/driving_log.csv", folderName="dirtLeft/")
     data+= data2
     steerings+=steerings2
-    # data3, steerings3 = read("dirtRoad/driving_log.csv", folderName="dirtRoad/")
-    # data+= data3
-    # steerings+=steerings3
+    data3, steerings3 = read("rightTurn1/driving_log.csv", folderName="rightTurn1/")
+    data+= data3
+    steerings+=steerings3
     #
     # data4, steerings4 = read("right/driving_log.csv", folderName="right/")
     # data+= data4
