@@ -101,6 +101,10 @@ def generate(filepath, pct, batchSize=32,flip=False):
     data+= data4
     steerings+=steerings4
 
+    data5, steerings5 = read("dirt/driving_log.csv", folderName="dirt/")
+    data+= data5
+    steerings+=steerings5
+
     print(len(steerings))
 
     data, steerings= shuffle(data,steerings)
