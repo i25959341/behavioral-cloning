@@ -13,7 +13,7 @@ callback = EarlyStopping(monitor='val_loss', patience=2, verbose=1)
 
 nb_epochs=10
 batchSize=128
-total_examples = 24107
+total_examples = 26979
 
 pct_train = 0.9
 

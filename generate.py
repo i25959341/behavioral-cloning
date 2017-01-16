@@ -101,6 +101,8 @@ def generate(filepath, pct, batchSize=32,flip=False):
     data+= data4
     steerings+=steerings4
 
+    print(len(steerings))
+
     data, steerings= shuffle(data,steerings)
     train, yTrain, valid, yValid = splitData(data, steerings, pct)
     if flip==True:
