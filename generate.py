@@ -87,23 +87,6 @@ def splitData(data, steerings,pct):
 
 def generate(filepath, pct, batchSize=32,flip=False):
     data, steerings = read("data/driving_log.csv", folderName="data/")
-    data1, steerings1 = read("rightTurn/driving_log.csv", folderName="rightTurn/")
-    data+= data1
-    steerings+=steerings1
-    # data2, steerings2 = read("dirtLeft/driving_log.csv", folderName="dirtLeft/")
-    # data+= data2
-    # steerings+=steerings2
-    data3, steerings3 = read("rightTurn1/driving_log.csv", folderName="rightTurn1/")
-    data+= data3
-    steerings+=steerings3
-    #
-    data4, steerings4 = read("rightTurn2/driving_log.csv", folderName="rightTurn2/")
-    data+= data4
-    steerings+=steerings4
-
-    data5, steerings5 = read("dirt/driving_log.csv", folderName="dirt/")
-    data+= data5
-    steerings+=steerings5
 
     print(len(steerings))
 
