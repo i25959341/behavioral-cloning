@@ -5,7 +5,7 @@ import random
 from PIL import Image
 from itertools import islice
 
-OFFSET = 0.05
+OFFSET = 0.08
 TOTALDATA=24107
 
 def shuffle(data, steering):
