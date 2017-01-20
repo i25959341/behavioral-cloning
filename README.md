@@ -109,7 +109,7 @@ The most important thing is Data!
 
 
 Video link to the recording
-https://www.youtube.com/watch?v=_a7s1PPxcJc
+http://youtu.be/84MMQiyglVw?hd=1
 
 
 
