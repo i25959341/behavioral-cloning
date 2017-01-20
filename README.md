@@ -36,7 +36,11 @@ Collecting the data was one of the most important steps during this project. Dur
 ## Data preparation
 I found that the whole image can confuse the model due to unncessary background noises such as tries, skies, etc. I decided to cut those unncessary pixels and reduced the size by 25%. As a result, the size of the image was 37 x 160 x 3. The model was trained on center camera, however, it was oscillating quite a lot in the middle of the track and there was very poor recovery. I decided to add also left and right image, with the angle adjustment of 0.1. This parameter was tuned by trial and error.
 
-## Model network architecture
+## Model Architecture Design
+
+The model architecture is basiclly the same as the Navidia paper shown by Udacity, but with severial important modifications. Firstly, number of filters are havled as our image input size is much smaller than Navidia. Second, the model used dropout to improved reularisations; it is noticeable that once regulisation is added, the car swings less and more stable.
+
+```
 ____________________________________________________________________________________________________
 Layer (type)                     Output Shape          Param #     Connected to                     
 ====================================================================================================
@@ -80,6 +84,14 @@ dropout_3 (Dropout)              (None, 50)            0           activation_7[
 ____________________________________________________________________________________________________
 dense_4 (Dense)                  (None, 1)             51          dropout_3[0][0]                  
 ____________________________________________________________________________________________________
+```
+
+## Data Processing
+Udacity data is used as the foundation of the project but it is shown that it is not enough to get good results. This might be due to Udacity dataset is quite limited and there is a lot of zero-centred data. There is a tendency of the car not moving at all due to most of the time in the trainning data, the car dont move and thus influence its behavior in curves.
+
+Therefore, I have used a joystick to record more data with a focus on colllecting data along curves. I avoid recording data in the straight road only when I am steering. Several difficult part of the roads are recorded repeatedly to get good behaviour. I also focus recoding data on the part of the road where the car made mistakes which are detailed in the next sections.
+
+Data collection singlehandly improved most of the performance of the car very significantly
 
 ## Track - The Bridge, The 1st Corner after the bridge with dirt, the 2nd Coarn after the bridge turning right
 After testing on autonomous mode, it became obvious that the car was struggling with several part of the track significant and there were the bridge, the 1st corner after the bridge and the 2nd right corner after the bridge.
